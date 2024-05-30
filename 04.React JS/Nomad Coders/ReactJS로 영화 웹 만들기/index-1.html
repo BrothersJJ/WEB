@@ -33,7 +33,7 @@
 
   // Title과 Button을 포함시키기 위해 이 둘을 함수로 만들어야 함
   // 컴포넌트의 첫 글자는 반드시 대문자
-  const Container = () => (
+  const Container = () => ( // return이 생략되어서 () 사용
     <div>
       <h3>Total clicks: {counter}</h3>
       <button onClick={countUp}>Click me</button>
