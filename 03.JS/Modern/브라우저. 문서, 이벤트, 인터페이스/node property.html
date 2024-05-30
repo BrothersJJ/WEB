@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let elem = document.body;
+  alert(elem.nodeType); // 1 => 요소 노드
+  alert(elem.firstChild.nodeType); // 3 => 텍스트 노드
+  alert(document.nodeType); // 9 => 문서 객체
+
+  alert(document.body.nodeName); // body
+  alert(document.body.tagName); // body
+</script>
+
+<p>p 태그</p>
+<div>div 태그</div>
+<script>
+  alert(document.body.innerHTML);
+  document.body.innerHTML = 'new body';
+
+  document.body.innerHTML = '<b>test';
+  alert(document.body.innerHTML); // <b>test</b>
+</script>
+
+<div id="elem">Hello <b>World</b></div>
+<script>
+  alert(elem.outerHTML); // <div id="elem">Hello <b>World</b></div>
+</script>
+
+<div>Hello, world!</div>
+<script>
+  let div = document.querySelector('div');
+  div.outerHTML = '<p>new property</p>';
+  alert(div.outerHTML);
+</script>
+
+안녕하세요.
+<!-- 주석 -->
+<script>
+  let text = document.body.firstChild;
+  alert(text.data); // 안녕하세요
+  let comment = text.nextSibling;
+  alert(comment.data); // 주석
+</script>
+
+<div id="news">
+  <h1>주요 뉴스!</h1>
+  <p>화성인이 지구를 침공하였습니다!</p>
+</div>
+<script>
+  // 주요 뉴스! 화성인이 지구를 침공하였습니다!
+  alert(news.textContent);
+</script>
+
+<div id="elem1"></div>
+<div id="elem2"></div>
+<script>
+  let name = prompt("name","<b>lee bo ra</b>");
+  elem1.innerHTML = name;
+  elem2.textContent = name;
+</script>
+
+<div>아래 두 div를 숨겨봅시다.</div>
+<div hidden>아래 두 div를 숨겨봅시다.</div>
+<div id="eleme">아래 두 div를 숨겨봅시다.</div>
+<script>
+  eleme.hidden = true;
+</script>
+
+<div id="elems">깜빡이는 요소</div>
+<script>
+  // !elem.hidden: hidden 속성의 현재 값을 반전시킵니다. 만약 hidden이 true라면 false로, false라면 true로 변경합니다.
+  setInterval(() => elems.hidden = !elems.hidden, 1000);
+</script>
+
+<input type="text" id="elema" value="value">
+<script>
+  alert(elema.type); // text
+  alert(elema.id); // elema
+  alert(elema.value); // value
+</script>
+
+<script>
+  let body = document.body;
+
+  body.innerHTML = "<!--" + body.tagName + "-->";
+
+  alert( body.firstChild.data ); // BODY
+</script>
+
+
+</body>
+</html>

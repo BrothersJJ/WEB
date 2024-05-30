@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+
+<!-- react를 쓰기 전에 react를 import 해야 함 -->
+<!-- react는 엔진 역할 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+<script>
+  const root = document.getElementById("root");
+
+  // react로 element 생성. 두 번째에 property 줄 수 있음. id="sexy-span". 세 번째는 content 줌.
+  const h3 = React.createElement(
+    "h3",
+    { id:"title" , style: {color:"red"},
+    onMouseEnter: () => console.log("mouse enter")
+    }, "Hello I'm a span"); // 괄호 안이 html tag와 같아야 함
+
+  // property에 event 등록 가능.
+  const btn = React.createElement("button", {
+    onClick: () => console.log("im clicked"),
+    style: {
+      backgroundColor: "tomato"
+    },
+  }, "Click me");
+
+  // div 안에 span과 btn을 배열로 두어서 html에 표시하기 위한 준비
+  const container = React.createElement("div", null, [h3, btn]);
+
+  // root 안에 container 두기
+  ReactDOM.render(container, root); // react element를 가지고 html로 만들어 배치
+</script>
+</html>

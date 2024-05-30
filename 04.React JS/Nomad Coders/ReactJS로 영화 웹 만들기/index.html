@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<!-- react를 쓰기 전에 react를 import 해야 함 -->
+<!-- react는 엔진 역할 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<!-- JSX 설치 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById("root");
+
+  // JSX를 이용한 방법
+  function Title() {
+    return (
+      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        Hello I'm a title
+      </h3>);
+  }
+
+  const Button = () => (<button style={{
+    background: "tomato",
+  }} onClick={() => console.log("I'm clicked")}>Click me
+  </button>);
+
+  // Title과 Button을 포함시키기 위해 이 둘을 함수로 만들어야 함
+  // 컴포넌트의 첫 글자는 반드시 대문자
+  const Container = () => (
+    <div>
+      <Title />
+      <Button />
+    </div>);
+
+  // root 안에 container 두기
+  ReactDOM.render(<Container />, root); // react element를 가지고 html로 만들어 배치
+</script>
+</html>

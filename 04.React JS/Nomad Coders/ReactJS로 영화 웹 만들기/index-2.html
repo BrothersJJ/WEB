@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<!-- react를 쓰기 전에 react를 import 해야 함 -->
+<!-- react는 엔진 역할 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<!-- JSX 설치 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById("root");
+
+  // JSX를 이용한 방법
+
+  // Title과 Button을 포함시키기 위해 이 둘을 함수로 만들어야 함
+  // 컴포넌트의 첫 글자는 반드시 대문자
+  function App() {
+    const [counter, setCounter] = React.useState(0); // [data(괄호 안 숫자), f(data를 바꿀 함수)]
+    // counter === data[0], modifier === data[1]
+    const onClick = () => {
+      //setCounter(counter + 1); // 자동으로 reRendering을 일으킴
+      setCounter(current => current + 1); // 함수로 쓰면 정확이 현재 값인 것을 보장함
+
+    };
+    return (
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={onClick}>Click me</button>
+      </div>
+    );
+  }
+
+  // root 안에 container 두기
+  ReactDOM.render(<App/>, root); // react element를 가지고 html로 만들어 배치
+</script>
+</html>

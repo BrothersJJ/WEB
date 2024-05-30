@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="elem">
+  <div id="elem-content">Element</div>
+</div>
+
+<script>
+  let elem = document.getElementById('elem');
+  elem.style.backgroundColor = 'red';
+</script>
+
+<ul>
+  <li>1-1</li>
+  <li>1-2</li>
+</ul>
+<ul>
+  <li>2-1</li>
+  <li>2-2</li>
+</ul>
+<script>
+  let elements = document.querySelectorAll('ul > li:last-child');
+  for (let elem of elements) {
+    alert(elem.innerHTML); // 1-2, 2-2
+  }
+</script>
+
+  <a href="http://example.com/file.zip">...</a>
+  <a href="http://ya.ru">...</a>
+  <script>
+    for (let elem of document.body.children) {
+      if (elem.matches('a[href$="zip"]')) {
+        alert("주어진 CSS 선택자와 일치하는 요소: " + elem.href);
+      }
+    }
+  </script>
+
+<h1>목차</h1>
+<div class="contents">
+  <ul class="book">
+    <li class="chapter">1장</li>
+    <li class="chapter">2장</li>
+  </ul>
+</div>
+<script>
+  let chapter = document.querySelector('.chapter'); // li
+  alert(chapter.closet('.book')); // ul
+  alert(chapter.closet('.contents')); // div
+  alert(chapter.closest('h1')); // null
+</script>
+
+<table id="table">
+  <tr>
+    <td>나이:</td>
+
+    <td>
+      <label>
+        <input type="radio" name="age" value="young" checked> 18세 미만
+      </label>
+      <label>
+        <input type="radio" name="age" value="mature"> 18세 이상, 60세 미만
+      </label>
+      <label>
+        <input type="radio" name="age" value="senior"> 60세 이상
+      </label>
+    </td>
+  </tr>
+</table>
+<script>
+  let inputs = table.getElementsByTagName('input');
+  for (let input of inputs) {
+    alert(input.value + ': ' + input.checked );
+  }
+</script>
+
+<form name="my-form">
+  <div class="article">글</div>
+  <div class="long article">내용이 긴 글</div>
+</form>
+<script>
+  let form = document.getElementsByName('my-form')[0];
+  let articles = form.getElementsByClassName('article');
+  alert(articles.length); // 2
+</script>
+
+<div>첫 번째 div</div>
+<script>
+  let divs = document.getElementsByName('div');
+  alert(divs.length); // 1
+</script>
+<div>두 번째 div</div>
+<script>
+  alert(divs.length); // 2
+</script>
+
+<div>첫 번째 div</div>
+<script>
+  let divs = document.querySelectorAll('div');
+  alert(divs.length); // 1
+</script>
+<div>2</div>
+<script>
+  alert(divs.length); // 1
+</script>
+
+<script>
+  let table = document.querySelector("#age-table");
+  table.querySelectorAll("#age-table label");
+  table.querySelector("#age-table td:first-child");
+  document.querySelector('form[name="search"]');
+  form.querySelector('input');
+  const inputs = form.querySelectorAll('input');
+  inputs[inputs.length-1];
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>사슴에 관하여</title>
+</head>
+<body>
+  사슴에 관한 진실.
+  <ol>
+    <li>사슴은 똑똑합니다.</li>
+    <!-- comment -->
+    <li>그리고 잔꾀를 잘 부리죠</li>
+  </ol>
+
+  <div>시작</div>
+
+  <ul>
+    <li>
+      <b>항목</b>
+    </li>
+  </ul>
+
+  <script>
+    for (let i = 0; i < document.body.childNodes.length; i++) {
+      alert(document.body.childNodes[i]);
+    }
+
+    elem.childNodes[0] === elem.firstChild;
+    elem.childNodes[elem.childNodes.length - 1] === elem.lastChild;
+
+    for (let node of document.body.childNodes) {
+      alert(node); // saw all nodes in collection
+    }
+
+    alert(document.body.childNodes.filter); // undefined
+
+    alert(Array.from(document.body.childNodes).filter); // function
+
+    alert(document.body.parentNode === document.documentElement); // true, html
+    alert(document.head.nextSibling); // htmlbodyelement
+    alert(document.body.previousSibling); // htmlheadelement
+
+    alert(document.documentElement.parentNode); // document
+    alert(document.documentElement.parentElement); // null
+
+    for (let elem of document.body.children) {
+      alert(elem);
+    }
+  </script>
+
+  <table id="table">
+    <tr>
+      <td>일</td><td>이</td>
+    </tr>
+    <tr>
+      <td>삼</td><td>사</td>
+    </tr>
+  </table>
+
+  <script>
+    let td = table.rows[0].cells[1]; // 이
+    td.style.backgroundColor = "red";
+  </script>
+
+
+
+</body>
+</html>

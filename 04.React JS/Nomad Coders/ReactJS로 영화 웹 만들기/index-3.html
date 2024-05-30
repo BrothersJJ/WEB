@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<!-- react를 쓰기 전에 react를 import 해야 함 -->
+<!-- react는 엔진 역할 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<!-- JSX 설치 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById("root");
+
+  function App() {
+    // 첫 번째는 state로써 value, 두 번째는 value를 수정하고 component를 새로고침 할 때 쓰는 함수
+    // value를 input에 있는 value에 넣어줘야 함
+    const [minutes, setMinutes] = React.useState();
+    const onChange = (event) => {
+      setMinutes(event.target.value);
+    };
+    return (
+      <div>
+        <h1 className="hi">Super Converter</h1>
+        <label for="minutes">Minutes</label>
+        <input
+          value={minutes}
+          id="minutes"
+          placeholder="Minutes"
+          type="number"
+          onChange={onChange} // Input에 새로운 값을 입력할 때마다 state 업데이트. onChange 실행
+        />
+        <h4>You want to convert {minutes}</h4>
+        <label for="hours">Hours</label>
+        <input id="hours" placeholder="Hours" type="number" />
+      </div>
+    );
+  }
+
+  ReactDOM.render(<App/>, root);
+</script>
+</html>
