@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: oldlace;
+}
+
+.title {
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 4rem;
+}
+
+.title h2 {
+  font-size: 5rem;
+  color: goldenrod;
+  font-family: "Great Vibes", cursive;
+  text-align: center;
+}
+
+.section-center {
+  margin: 0 auto;
+  padding: 1rem 4rem 1rem 4rem;
+  width: 90vw;
+  max-width: 1170px;
+}
+
+.question {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px grey;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.question-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  padding-bottom: 1rem;
+}
+
+.question-title p {
+  letter-spacing: 0.25rem;
+  color: grey;
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+
+.question-btn {
+  font-size: 1.75rem;
+  background: transparent;
+  border: transparent;
+  color: goldenrod;
+  cursor: pointer;
+}
+
+.question-btn:hover {
+  transform: rotate(90deg);
+}
+
+.question-text {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 0 1.5rem 0;
+  border-top: 1px solid orange;
+}
+
+.question-text p {
+  margin-bottom: 0;
+  color: #888888;
+}
+
+/* 모든 질문 답변 숨김 */
+.question-text {
+  display: none;
+}
+
+/* show-text 클래스가 추가되었을 때, 답변 보이게 함 */
+.show-text .question-text {
+  display: block;
+}
+
+/* 기본적으로 모든 'minus-icon'을 숨깁니다.
+이 아이콘은 질문이 확장되어 답변이 보이는 상태를 나타내기 위해 사용됨 */
+.minus-icon {
+  display: none;
+}
+
+/* '.show-text' 클래스가 부모 요소에 추가됐을 때, 해당 부모 요소 내의 '.minus-icon' 요소를 보이게 함 */
+.show-text .minus-icon {
+  display: inline;
+}
+
+/* '.show-text' 클래스가 부모 요소에 추가됐을 때, 해당 부모 요소 내의 '.plus-icon' 요소를 숨김 */
+.show-text .plus-icon {
+  display: none;
+}

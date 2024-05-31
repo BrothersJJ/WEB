@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<!-- JSX 설치 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  const root = document.getElementById("root");
+
+  function App() {
+    const [counter, setCounter] = React.useState(0);
+    const onClick = () => {
+      setCounter(current => ++current);
+      ReactDOM.render(<App />,root);
+    };
+    return (
+      <div>
+        <h3>Total Clicks: {counter}</h3>
+        <button onClick={onClick}>Click me</button>
+      </div>
+    );
+  }
+
+  ReactDOM.render(<App />,root);
+</script>
+</html>
