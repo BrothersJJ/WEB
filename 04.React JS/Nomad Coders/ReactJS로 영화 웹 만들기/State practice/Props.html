@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<!-- react를 쓰기 전에 react를 import 해야 함 -->
+<!-- react는 엔진 역할 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<!-- JSX 설치 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  /*
+  props = 부모 컴포넌트로부터 자식 컴포넌트에게 데이터를 전송하는 방식.
+  부모에 props를 사용하면 자식 컴포넌트(함수)의 인자로 객체가 들어가게 됨.
+  하나의 버튼을 만들어서 props를 이용해 버튼의 스타일을 관리해서 재사용 할 수 있게됨.
+  */
+
+  // 컴포넌트
+  function Btn({banana, big}) { // props: Btn으로부터 전달 받은 properties. Object. shortcut: props 대신 {banana}를 주로 사용
+    // {banana} === {props.banana}
+    return (
+      <button
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px 20px",
+          borderRadius:10,
+          border: 0,
+          fontSize: big ? 28 : 16,
+        }}>
+        {banana}
+      </button>
+    );
+  }
+
+  function App() {
+    // 함수형 컴포넌트. JSX 내부
+    // Btn({banana="Save Changes"})
+    // Btn({banana="Continue"})
+    return (
+      <div>
+        <Btn banana="Save Changes" big={true}/>
+        <Btn banana="Continue" big={false}/>
+      </div>
+    )
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App/>, root);
+</script>
+</html>

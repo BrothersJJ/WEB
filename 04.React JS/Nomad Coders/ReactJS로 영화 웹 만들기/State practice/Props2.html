@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<!-- react를 쓰기 전에 react를 import 해야 함 -->
+<!-- react는 엔진 역할 -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<!-- react-dom은 react element를 html에 두는 역할 -->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<!-- JSX 설치 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  /*
+  props = 부모 컴포넌트로부터 자식 컴포넌트에게 데이터를 전송하는 방식.
+  부모에 props를 사용하면 자식 컴포넌트(함수)의 인자로 객체가 들어가게 됨.
+  하나의 버튼을 만들어서 props를 이용해 버튼의 스타일을 관리해서 재사용 할 수 있게됨.
+  */
+
+  // 컴포넌트
+  function Btn({text, changeValue}) { // props: Btn으로부터 전달 받은 properties. Object. shortcut: props 대신 {banana}를 주로 사용
+    // {banana} === {props.banana}
+    return (
+      <button
+        onClick={changeValue}
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px 20px",
+          borderRadius:10,
+          border: 0,
+        }}>
+        {text}
+      </button>
+    );
+  }
+
+  // 변경되지 않는 Continue가 rerender 되는 것을 막아줌. 느려지는 것을 막아줌
+  // React.memo를 사용하여 래핑된 컴포넌트는 props 변화만을 감지하여 애초에 컴포넌트 함수를 호출할지 말지를 결정
+  const MemorizedBtn = React.memo(Btn);
+
+  function App() {
+    const [value, setValue] = React.useState("Save Changes");
+    const changeValue = () => setValue("Revert Change");
+
+    // 함수형 컴포넌트. JSX 내부
+    // Btn({banana="Save Changes"})
+    // Btn({banana="Continue"})
+    // changeValue = event가 아니라 하나의 props. Btn component로 들어가는 것.
+    return (
+      <div>
+        <MemorizedBtn text={value} changeValue={changeValue}/>
+        <MemorizedBtn text="Continue" />
+      </div>
+    )
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App/>, root);
+</script>
+</html>
